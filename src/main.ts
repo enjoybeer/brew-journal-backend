@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import { environment } from '../environment';
 import { AppModule } from './app.module';
 
 
@@ -14,7 +15,7 @@ process.on('SIGINT', () => {
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
-    await app.listen(3000);
+    await app.listen(environment.config.port);
 }
 
 bootstrap();
